@@ -12,7 +12,6 @@ from database import LocalDatabase
 from classical_search import classical_linear_search
 from grover.grover_core import grover_search
 
-
 class CrawlThread(QThread):
     finished = pyqtSignal(list)
     def __init__(self, keyword):
@@ -27,13 +26,75 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Grover量子搜索与网络聚合演示")
-        self.setGeometry(500, 500, 1000, 800)
+        self.setGeometry(300, 100, 1200, 950)
+        from PyQt5.QtGui import QIcon
+        import os
+        icon_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'pic.ico')
+        if os.path.exists(icon_path):
+            self.setWindowIcon(QIcon(icon_path))
         self.db = LocalDatabase()
         self.init_ui()
 
     def init_ui(self):
+        # 设置全局QSS美化
+        self.setStyleSheet('''
+            QWidget {
+                background: #f6f8fa;
+                font-family: 'Microsoft YaHei', Arial, sans-serif;
+                font-size: 18px;
+            }
+            QLabel#TitleLabel {
+                font-size: 26px;
+                font-weight: bold;
+                color: #2060a0;
+                padding: 18px 0 8px 0;
+                qproperty-alignment: AlignCenter;
+            }
+            QLineEdit {
+                border: 1.5px solid #b0bfe6;
+                border-radius: 7px;
+                padding: 7px 10px;
+                background: #fff;
+                font-size: 16px;
+            }
+            QLineEdit:focus {
+                border: 2px solid #337ecc;
+                background: #f0f7ff;
+            }
+            QPushButton {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #4696e5, stop:1 #337ecc);
+                color: white;
+                border-radius: 8px;
+                font-size: 16px;
+                padding: 8px 20px;
+                font-weight: bold;
+                min-width: 90px;
+            }
+            QPushButton:hover {
+                background: #205eaa;
+            }
+            QComboBox {
+                border: 1.5px solid #b0bfe6;
+                border-radius: 7px;
+                padding: 7px 10px;
+                background: #fff;
+                font-size: 16px;
+            }
+            QTextBrowser {
+                background: #fafdff;
+                border-radius: 10px;
+                border: 1.5px solid #b0bfe6;
+                font-size: 17px;
+                padding: 12px 15px;
+                color: #222;
+            }
+        ''')
         main_widget = QWidget()
         main_layout = QVBoxLayout()
+        # 标题
+        title = QLabel("Grover量子搜索与网络聚合演示")
+        title.setObjectName("TitleLabel")
+        main_layout.addWidget(title)
         # 关键词输入
         input_layout = QHBoxLayout()
         self.keyword_edit = QLineEdit()
@@ -246,7 +307,7 @@ class MainWindow(QMainWindow):
         canvas.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         layout.addWidget(canvas)
         dlg.setLayout(layout)
-        dlg.resize(100+180*n, 350)
+        dlg.setGeometry(300, 100, 1200, 950)
         dlg.exec_()
 
     def open_url(self, url: QUrl):
@@ -254,8 +315,6 @@ class MainWindow(QMainWindow):
         url_str = url.toString()
         import webbrowser
         webbrowser.open(url_str)
-
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

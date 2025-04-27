@@ -13,8 +13,8 @@ def sogou_search_crawl(keyword: str) -> List[Dict]:
     headers = {"User-Agent": "Mozilla/5.0"}
     results = []
     page = 1
-    # 默认最多抓取5页（每页10条）
-    max_pages = 5
+    # 默认最多抓取50页（每页10条）
+    max_pages = 50
     while page <= max_pages:
         url = f"https://www.sogou.com/web?query={keyword}&page={page}"
         resp = requests.get(url, headers=headers, timeout=10)

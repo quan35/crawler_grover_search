@@ -15,10 +15,3 @@ def classical_linear_search(database: List[Any], target: Any) -> int:
         if item == target:
             return idx
     return -1
-
-# 用于性能测试和对比
-if __name__ == "__main__":
-    db = ["apple", "banana", "os", "linux", "windows"]
-    target = "os"
-    idx = classical_linear_search(db, target)
-    print(f"Target '{target}' found at index: {idx}")

@@ -73,4 +73,3 @@ def grover_search(database: List[Any], target: Any, shots: int = 1024):
     found_idx = int(max_state, 2)
     found = pad_db[found_idx]
     return found, counts
-

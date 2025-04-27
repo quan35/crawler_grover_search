@@ -30,4 +30,3 @@ def create_oracle(n_qubits: int, target_state: List[int]) -> QuantumCircuit:
             oracle.x(i)
     oracle.name = "Oracle"
     return oracle
-

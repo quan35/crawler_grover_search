@@ -13,8 +13,8 @@ def baidu_search_crawl(keyword: str) -> List[Dict]:
     headers = {"User-Agent": "Mozilla/5.0"}
     results = []
     page = 0
-    # 默认最多抓取5页（每页10条）
-    max_pages = 5
+    # 默认最多抓取50页（每页10条）
+    max_pages = 50
     while page < max_pages:
         pn = page * 10
         url = f"https://www.baidu.com/s?wd={keyword}&pn={pn}"

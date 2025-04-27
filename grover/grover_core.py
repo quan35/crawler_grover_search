@@ -11,7 +11,10 @@ from qiskit import transpile
 
 import numpy as np
 from typing import List, Any
-from .oracle import create_oracle
+try:
+    from .oracle import create_oracle
+except ImportError:
+    from oracle import create_oracle
 
 def grover_search(database: List[Any], target: Any, shots: int = 1024):
     """

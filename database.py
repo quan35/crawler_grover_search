@@ -40,4 +40,29 @@ class LocalDatabase:
 
     def all(self) -> List[Dict]:
         return self.data
+    
+    def query_with_ranking(self, keyword: str) -> List[Dict]:
+        """实现基于相关性的搜索结果排序"""
+        results = self.query(keyword)
+        # 根据关键词在标题和摘要中的出现频率、位置等因素计算相关性分数
+        return sorted(results, key=lambda x: self._calculate_relevance(x, keyword), reverse=True)
+    
+    def _calculate_relevance(self, item: Dict, keyword: str) -> float:
+        """计算搜索结果与关键词的相关性分数"""
+        score = 0.0
+        title = item.get('title', '')
+        summary = item.get('summary', '')
+        
+        # 标题中包含关键词权重更高
+        if keyword.lower() in title.lower():
+            score += 10.0
+            # 标题开头包含关键词权重更高
+            if title.lower().startswith(keyword.lower()):
+                score += 5.0
+                
+        # 摘要中包含关键词
+        if keyword.lower() in summary.lower():
+            score += 5.0
+            
+        return score
 

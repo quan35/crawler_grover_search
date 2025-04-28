@@ -118,7 +118,7 @@ class MainWindow(QMainWindow):
             }
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #4696e5, stop:1 #337ecc);
-                color: white;
+                color: #2060a0;
                 border-radius: 8px;
                 font-size: 15px;
                 padding: 8px 16px;
@@ -134,7 +134,6 @@ class MainWindow(QMainWindow):
             }
             QPushButton#quantumDetailBtn {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #4696e5, stop:1 #2060a0);
-                border: 2px solid #1c4e8f;
             }
             QPushButton#quantumDetailBtn:hover {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #3d88ee, stop:1 #19508c);

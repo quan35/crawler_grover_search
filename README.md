@@ -1,12 +1,11 @@
 # Grover Quantum Search & Web Information Retrieval System
 
-![Project Banner](placeholder_project_banner.svg)
-
 ## Overview
 
 This project implements a quantum-enhanced information retrieval system that combines Grover's quantum search algorithm with classical web content aggregation. It demonstrates how quantum algorithms can provide a theoretical advantage in search operations while integrating with practical web data collection.
 
 The system features a complete graphical user interface allowing users to:
+
 - Crawl web content based on keywords
 - Build a local unstructured database
 - Compare classical and quantum search performance
@@ -45,34 +44,36 @@ The system features a complete graphical user interface allowing users to:
 ## Theoretical Foundation
 
 Grover's algorithm provides a quadratic speedup for searching unstructured databases:
+
 - Classical search: O(N) queries required
 - Quantum search: O(√N) queries required
 
 This advantage becomes increasingly significant as the database size grows:
 
-| Database Size | Classical | Quantum | Speedup |
-|---------------|-----------|---------|---------|
-| 100 items     | ~50 queries | ~10 queries | 5x |
-| 10,000 items  | ~5,000 queries | ~100 queries | 50x |
-| 1,000,000 items | ~500,000 queries | ~1,000 queries | 500x |
-
-![Complexity Comparison](placeholder_complexity_comparison.png)
-*Comparison of classical O(N) vs. quantum O(√N) search complexity*
+| Database Size   | Classical        | Quantum        | Speedup |
+| --------------- | ---------------- | -------------- | ------- |
+| 100 items       | ~50 queries      | ~10 queries    | 5x      |
+| 10,000 items    | ~5,000 queries   | ~100 queries   | 50x     |
+| 1,000,000 items | ~500,000 queries | ~1,000 queries | 500x    |
 
 ## Installation & Setup
 
 ### Prerequisites
-- Python 3.8+ 
+
+- Python 3.8+
 - Pip package manager
 
 ### Installation Steps
+
 1. Clone this repository:
+
    ```
    git clone https://github.com/yourusername/grover-quantum-search.git
    cd grover-quantum-search
    ```
 
 2. Install dependencies:
+
    ```
    pip install -r requirements.txt
    ```
@@ -85,36 +86,28 @@ This advantage becomes increasingly significant as the database size grows:
 ## Usage Guide
 
 ### Web Content Crawling
+
 1. Enter a keyword in the "Keyword" field
 2. Click "Crawl Web Content"
 3. View results in the database tab
 
-![Content Crawling](placeholder_content_crawling.png)
-*Web content crawling interface*
-
 ### Performing Searches
+
 1. Enter a target string in the "Target" field
 2. Select either "Classical Search" or "Grover Quantum Search"
 3. Click "Search"
 4. View results in the results panel
 
-![Search Interface](placeholder_search_interface.png)
-*Search interface with algorithm selection*
-
 ### Quantum Visualization
+
 1. Perform a quantum search
 2. Click "Quantum Search Details"
 3. Explore the quantum circuit and measurement results
 
-![Quantum Visualization](placeholder_quantum_visualization.png)
-*Quantum circuit and measurement visualization*
-
 ### Algorithm Comparison
+
 1. Click "Algorithm Efficiency Comparison"
 2. View the performance metrics and theoretical complexity charts
-
-![Algorithm Comparison](placeholder_algorithm_comparison.png)
-*Classical vs. quantum search efficiency comparison*
 
 ## Technology Stack
 
@@ -127,6 +120,7 @@ This advantage becomes increasingly significant as the database size grows:
 ## Educational Value
 
 This project serves as an educational tool for understanding:
+
 - Quantum computing fundamentals
 - Grover's search algorithm implementation
 - Practical applications of quantum algorithms
@@ -153,4 +147,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-*This project was developed as a final assignment for the Quantum Computing course, demonstrating the practical application of quantum search algorithms in information retrieval systems.*
+_This project was developed as a final assignment for the Quantum Computing course, demonstrating the practical application of quantum search algorithms in information retrieval systems._

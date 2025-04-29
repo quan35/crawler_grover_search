@@ -1,65 +1,156 @@
-# Grover算法无序数据库搜索与网络信息聚合项目
+# Grover Quantum Search & Web Information Retrieval System
 
-## 项目简介
-本项目基于量子计算中的Grover算法，实现对本地无序数据库的高效搜索，并创新性地结合网络内容聚合功能。用户可输入关键词，项目会自动爬取网络相关信息，形成本地数据库，再通过Grover算法进行高效搜索。所有量子计算部分均为仿真实现，无需真实量子硬件。
+![Project Banner](placeholder_project_banner.svg)
 
-## 项目目标
-- 实现Grover算法的核心量子电路（仿真）
-- 支持自定义搜索目标和数据库规模
-- 网络爬虫自动聚合网络内容，构建本地无序数据库
-- 支持输入关键词自动抓取并搜索相关信息
-- 提供算法运行过程与结果的可视化
-- 对比经典搜索与量子搜索的效率
+## Overview
 
-## 项目结构
+This project implements a quantum-enhanced information retrieval system that combines Grover's quantum search algorithm with classical web content aggregation. It demonstrates how quantum algorithms can provide a theoretical advantage in search operations while integrating with practical web data collection.
+
+The system features a complete graphical user interface allowing users to:
+- Crawl web content based on keywords
+- Build a local unstructured database
+- Compare classical and quantum search performance
+- Visualize quantum circuits and measurement results
+
+## Key Features
+
+- **Quantum Search Implementation**: Full simulation of Grover's algorithm using Qiskit
+- **Multi-Source Web Crawler**: Aggregate content from multiple search engines
+- **Classical vs. Quantum Comparison**: Visual performance analysis and metrics
+- **Interactive Quantum Visualization**: Circuit diagrams and measurement distributions
+- **Elegant PyQt5 Interface**: User-friendly design with light/dark theme support
+
+## Project Structure
+
 ```
-quantum/
-├── grover/                     # Grover算法核心实现模块
-│   ├── __init__.py
-│   ├── grover_core.py          # Grover算法主逻辑
-│   └── oracle.py               # Oracle门实现
-├── classical_search.py         # 经典搜索算法实现
-├── web_crawler/                # 网络爬虫与内容聚合模块
-│   ├── __init__.py
-│   ├── crawler.py              # 网络内容抓取
-│   └── aggregator.py           # 数据聚合与去重
-├── database.py                 # 本地无序数据库管理
-├── gui/                        # 桌面GUI界面模块（PyQt5等）
-│   ├── __init__.py
-│   └── main_window.py          # 主窗口与交互逻辑
-├── main.py                     # 项目入口，启动GUI
-├── visualization.py            # 结果与量子态可视化
-├── requirements.txt            # 依赖包说明
-├── README.md                   # 项目说明文档
-├── task.md                     # 任务清单与进度
-└── pic.ico                     # 窗口图标
+├── grover/                     # Grover's algorithm implementation
+│   ├── grover_core.py          # Core quantum search logic
+│   └── oracle.py               # Oracle gate implementation
+├── web_crawler/                # Web content aggregation
+│   ├── aggregator.py           # Content deduplication and processing
+│   ├── baidu.py                # Baidu search engine crawler
+│   ├── sogou.py                # Sogou search engine crawler
+│   ├── crawler.py              # Base crawler functionality
+│   └── multi_crawler.py        # Multi-source orchestration
+├── gui/                        # PyQt5 GUI implementation
+│   └── main_window.py          # Main application window
+├── classical_search.py         # Classical search implementation
+├── database.py                 # Local database management
+├── main.py                     # Application entry point
+├── requirements.txt            # Dependencies
+├── quantum_computing_report.md # Detailed project report
+└── README.md                   # This file
 ```
 
-## 技术栈
-- Python 3.8+
-- PyQt5（桌面GUI界面）
-- Qiskit（量子计算仿真）
-- Matplotlib（可视化）
-- requests/BeautifulSoup（网络爬虫）
-- pandas（数据处理与聚合）
-- tqdm（进度条）
+## Theoretical Foundation
 
-## 快速开始
-1. 安装依赖：`pip install -r requirements.txt`
-2. 运行主程序：`python main.py`
-3. 在桌面窗口界面中输入关键词，点击“抓取网络内容”自动聚合数据
-4. 输入目标内容，选择经典或Grover搜索，查看结果
+Grover's algorithm provides a quadratic speedup for searching unstructured databases:
+- Classical search: O(N) queries required
+- Quantum search: O(√N) queries required
+
+This advantage becomes increasingly significant as the database size grows:
+
+| Database Size | Classical | Quantum | Speedup |
+|---------------|-----------|---------|---------|
+| 100 items     | ~50 queries | ~10 queries | 5x |
+| 10,000 items  | ~5,000 queries | ~100 queries | 50x |
+| 1,000,000 items | ~500,000 queries | ~1,000 queries | 500x |
+
+![Complexity Comparison](placeholder_complexity_comparison.png)
+*Comparison of classical O(N) vs. quantum O(√N) search complexity*
+
+## Installation & Setup
+
+### Prerequisites
+- Python 3.8+ 
+- Pip package manager
+
+### Installation Steps
+1. Clone this repository:
+   ```
+   git clone https://github.com/yourusername/grover-quantum-search.git
+   cd grover-quantum-search
+   ```
+
+2. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. Run the application:
+   ```
+   python main.py
+   ```
+
+## Usage Guide
+
+### Web Content Crawling
+1. Enter a keyword in the "Keyword" field
+2. Click "Crawl Web Content"
+3. View results in the database tab
+
+![Content Crawling](placeholder_content_crawling.png)
+*Web content crawling interface*
+
+### Performing Searches
+1. Enter a target string in the "Target" field
+2. Select either "Classical Search" or "Grover Quantum Search"
+3. Click "Search"
+4. View results in the results panel
+
+![Search Interface](placeholder_search_interface.png)
+*Search interface with algorithm selection*
+
+### Quantum Visualization
+1. Perform a quantum search
+2. Click "Quantum Search Details"
+3. Explore the quantum circuit and measurement results
+
+![Quantum Visualization](placeholder_quantum_visualization.png)
+*Quantum circuit and measurement visualization*
+
+### Algorithm Comparison
+1. Click "Algorithm Efficiency Comparison"
+2. View the performance metrics and theoretical complexity charts
+
+![Algorithm Comparison](placeholder_algorithm_comparison.png)
+*Classical vs. quantum search efficiency comparison*
+
+## Technology Stack
+
+- **Quantum Computing**: Qiskit (IBM's quantum computing framework)
+- **Data Visualization**: Matplotlib, Qiskit visualization tools
+- **Web Crawling**: Requests, BeautifulSoup4
+- **GUI Framework**: PyQt5
+- **Data Management**: JSON-based local database
+
+## Educational Value
+
+This project serves as an educational tool for understanding:
+- Quantum computing fundamentals
+- Grover's search algorithm implementation
+- Practical applications of quantum algorithms
+- Integration of quantum and classical systems
+- Web content aggregation and search techniques
+
+## Future Directions
+
+1. **Real Quantum Hardware Integration**: Adapt simulation for IBM Q hardware
+2. **Advanced Oracle Implementations**: Support for complex search criteria
+3. **Quantum Machine Learning**: Integrate quantum classification algorithms
+4. **Distributed Database Support**: Scale to larger, distributed data sources
+5. **Additional Quantum Algorithms**: Implement Shor's, QFT, and others
+
+## References
+
+1. Nielsen, M. A., & Chuang, I. L. (2010). Quantum Computation and Quantum Information.
+2. Grover, L. K. (1996). A fast quantum mechanical algorithm for database search.
+3. IBM Qiskit Documentation: https://qiskit.org/documentation/
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-## 主要特性与更新说明
-- **仅支持桌面GUI启动**，命令行入口和相关代码已彻底移除。
-- **经典与量子搜索结果URL展示体验优化**：所有URL均自动还原真实链接，无法还原时有明确提示，不会生成无效链接。
-- **参数校验健壮**：Grover搜索前自动校验目标和候选项，避免*参数为空*异常。
-- **无冗余测试代码**：所有单元测试、简单测试及未用import已清理，代码结构更精炼。
-- **任务追踪与进度**详见`task.md`。
-
----
-
-> 本项目采用桌面GUI模式，所有主要功能均可通过可视化界面交互，无需命令行操作。
-> 适合量子计算、数据聚合、信息检索等方向的学习与演示。
+*This project was developed as a final assignment for the Quantum Computing course, demonstrating the practical application of quantum search algorithms in information retrieval systems.*

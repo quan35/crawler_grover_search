@@ -1,0 +1,89 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="500" fill="#ffffff"/>
+  
+  <!-- 标题 -->
+  <text x="400" y="40" font-family="Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="#2060a0">Grover扩散算子工作原理</text>
+  <text x="400" y="70" font-family="Arial" font-size="16" text-anchor="middle" fill="#666666">反射操作放大目标态概率振幅</text>
+  
+  <!-- 图形区域 -->
+  <rect x="50" y="90" width="700" height="380" fill="#f9f9f9" stroke="#dddddd" stroke-width="1"/>
+  
+  <!-- 主要座标系 -->
+  <line x1="400" y1="400" x2="400" y2="120" stroke="#333333" stroke-width="2"/>
+  <line x1="200" y1="260" x2="600" y2="260" stroke="#333333" stroke-width="2"/>
+  
+  <text x="405" y="120" font-family="Arial" font-size="14" text-anchor="start" fill="#666666">|ψ〉</text>
+  <text x="605" y="255" font-family="Arial" font-size="14" text-anchor="start" fill="#666666">|x〉</text>
+  
+  <!-- 均值状态向量 -->
+  <line x1="400" y1="260" x2="400" y2="160" stroke="#2060a0" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="410" y="210" font-family="Arial" font-size="14" fill="#2060a0">|ψ〉 = 平均振幅</text>
+  
+  <!-- 原始状态分布示意 -->
+  <circle cx="400" cy="260" r="120" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-dasharray="3,2"/>
+  
+  <!-- 目标状态与非目标状态 -->
+  <!-- 目标状态 (已被Oracle标记) -->
+  <line x1="400" y1="260" x2="480" y2="190" stroke="#d73a49" stroke-width="2"/>
+  <circle cx="480" cy="190" r="6" fill="#d73a49"/>
+  <text x="490" y="185" font-family="Arial" font-size="14" fill="#d73a49">|ω〉 目标状态</text>
+  
+  <!-- 非目标状态 (多个) -->
+  <line x1="400" y1="260" x2="320" y2="190" stroke="#28a745" stroke-width="2"/>
+  <circle cx="320" cy="190" r="4" fill="#28a745"/>
+  <text x="270" y="185" font-family="Arial" font-size="14" fill="#28a745">非目标态</text>
+  
+  <line x1="400" y1="260" x2="350" y2="210" stroke="#28a745" stroke-width="2"/>
+  <circle cx="350" cy="210" r="4" fill="#28a745"/>
+  
+  <line x1="400" y1="260" x2="450" y2="210" stroke="#28a745" stroke-width="2"/>
+  <circle cx="450" cy="210" r="4" fill="#28a745"/>
+  
+  <line x1="400" y1="260" x2="370" y2="220" stroke="#28a745" stroke-width="2"/>
+  <circle cx="370" cy="220" r="4" fill="#28a745"/>
+  
+  <line x1="400" y1="260" x2="430" y2="220" stroke="#28a745" stroke-width="2"/>
+  <circle cx="430" cy="220" r="4" fill="#28a745"/>
+  
+  <!-- 反射箭头 -->
+  <path d="M 380,190 C 380,170 420,170 420,190" stroke="#6f42c1" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="400" y="165" font-family="Arial" font-size="14" text-anchor="middle" fill="#6f42c1">反射操作</text>
+  
+  <!-- 反射后目标状态 -->
+  <line x1="400" y1="260" x2="520" y2="150" stroke="#d73a49" stroke-width="3" stroke-dasharray="4,0"/>
+  <circle cx="520" cy="150" r="8" stroke="#d73a49" stroke-width="2" fill="none"/>
+  <text x="530" y="150" font-family="Arial" font-size="14" fill="#d73a49">反射后</text>
+  
+  <!-- 注释 -->
+  <rect x="100" y="300" width="600" height="120" rx="10" ry="10" fill="#f0f7ff" stroke="#2060a0" stroke-width="1"/>
+  <text x="120" y="330" font-family="Arial" font-size="16" font-weight="bold" fill="#2060a0">扩散算子工作原理:</text>
+  <text x="120" y="360" font-family="Arial" font-size="14" fill="#333333">1. Oracle标记目标状态，翻转其相位（在空间中表现为向量取反）</text>
+  <text x="120" y="385" font-family="Arial" font-size="14" fill="#333333">2. 扩散算子将量子态向量沿着平均振幅进行反射: D = 2|ψ〉〈ψ| - I</text>
+  <text x="120" y="410" font-family="Arial" font-size="14" fill="#333333">3. 反射结果：目标状态振幅增大，非目标状态振幅减小</text>
+  
+  <!-- 图例 -->
+  <rect x="600" y="100" width="120" height="90" rx="5" ry="5" fill="#ffffff" stroke="#dddddd" stroke-width="1"/>
+  <text x="660" y="120" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">图例</text>
+  
+  <line x1="610" y1="140" x2="630" y2="140" stroke="#d73a49" stroke-width="2"/>
+  <circle cx="630" cy="140" r="4" fill="#d73a49"/>
+  <text x="640" y="145" font-family="Arial" font-size="12" fill="#333333">目标状态</text>
+  
+  <line x1="610" y1="165" x2="630" y2="165" stroke="#28a745" stroke-width="2"/>
+  <circle cx="630" cy="165" r="4" fill="#28a745"/>
+  <text x="640" y="170" font-family="Arial" font-size="12" fill="#333333">非目标状态</text>
+  
+  <!-- 量子电路实现 -->
+  <rect x="100" y="430" width="600" height="30" rx="5" ry="5" fill="#f8f9fa" stroke="#dddddd" stroke-width="1"/>
+  <text x="400" y="450" font-family="Arial" font-size="12" text-anchor="middle" fill="#666666">
+    量子电路实现: H⊗ⁿ · (2|0⟩⟨0| - I) · H⊗ⁿ = 2|ψ〉〈ψ| - I
+  </text>
+  
+  <!-- 箭头标记定义 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6f42c1" />
+    </marker>
+  </defs>
+</svg>

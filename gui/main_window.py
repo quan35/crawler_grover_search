@@ -1,6 +1,6 @@
 """
-主窗口界面（PyQt5实现）
-支持关键词输入、网络抓取、聚合、数据库存储、经典与Grover搜索、结果可视化。
+Main window interface (implemented with PyQt5)
+Supports keyword input, web crawling, aggregation, database storage, classical and Grover search, result visualization.
 """
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
@@ -36,23 +36,23 @@ class CrawlThread(QThread):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Grover量子搜索与网络聚合演示")
+        self.setWindowTitle("Grover Quantum Search and Web Aggregation Demo")
         self.setGeometry(300, 100, 1200, 950)
         # 获取图标路径
         icon_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'pic.ico')
         if os.path.exists(icon_path):
             self.setWindowIcon(QIcon(icon_path))
         
-        # 初始化数据库
+        # Initialize database
         self.db = LocalDatabase()
         
-        # 设置应用主题颜色
+        # Set application theme colors
         self.setPalette(self.create_dark_palette() if self.is_dark_mode_preferred() else self.create_light_palette())
         
-        # 初始化UI
+        # Initialize UI
         self.init_ui()
         
-        # 状态栏显示数据库状态
+        # Status bar shows database status
         self.update_statusbar()
     
     def is_dark_mode_preferred(self):
@@ -251,9 +251,9 @@ class MainWindow(QMainWindow):
         
         # 创建标题和副标题
         title_layout = QVBoxLayout()
-        title = QLabel("Grover量子搜索与网络聚合系统")
+        title = QLabel("Grover Quantum Search and Web Aggregation System")
         title.setObjectName("TitleLabel")
-        subtitle = QLabel("结合量子计算与经典搜索技术，提供高效的信息检索体验")
+        subtitle = QLabel("Combining quantum computing and classical search technologies for efficient information retrieval")
         subtitle.setAlignment(Qt.AlignCenter)
         subtitle.setStyleSheet("color: #666; font-size: 16px; padding-bottom: 10px;")
         title_layout.addWidget(title)
@@ -282,19 +282,19 @@ class MainWindow(QMainWindow):
         input_layout = QVBoxLayout(input_frame)
         
         # 关键词输入标题
-        input_title = QLabel("网络内容抓取")
+        input_title = QLabel("Web Content Crawling")
         input_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #2060a0;")
         input_layout.addWidget(input_title)
         
         # 关键词输入与按钮
         keyword_layout = QHBoxLayout()
-        keyword_label = QLabel("关键词:")
+        keyword_label = QLabel("Keyword:")
         self.keyword_edit = QLineEdit()
-        self.keyword_edit.setPlaceholderText("请输入搜索关键词")
+        self.keyword_edit.setPlaceholderText("Enter search keyword")
         # 添加回车键响应
         self.keyword_edit.returnPressed.connect(self.on_crawl)
         
-        self.crawl_btn = QPushButton("抓取网络内容")
+        self.crawl_btn = QPushButton("Crawl Web Content")
         self.crawl_btn.setIcon(QIcon.fromTheme("search"))
         self.crawl_btn.clicked.connect(self.on_crawl)
         
@@ -319,23 +319,23 @@ class MainWindow(QMainWindow):
         target_layout = QVBoxLayout(target_frame)
         
         # 目标搜索标题
-        target_title = QLabel("目标搜索")
+        target_title = QLabel("Target Search")
         target_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #2060a0;")
         target_layout.addWidget(target_title)
         
         # 目标搜索输入与按钮
         search_input_layout = QHBoxLayout()
-        target_label = QLabel("目标:")
+        target_label = QLabel("Target:")
         self.target_edit = QLineEdit()
-        self.target_edit.setPlaceholderText("请输入要查找的目标")
+        self.target_edit.setPlaceholderText("Enter target to find")
         # 添加回车键响应
         self.target_edit.returnPressed.connect(self.on_search)
         
         self.alg_combo = QComboBox()
-        self.alg_combo.addItems(["经典搜索", "Grover量子搜索"])
+        self.alg_combo.addItems(["Classical Search", "Grover Quantum Search"])
         self.alg_combo.setStyleSheet("padding-right: 15px;")
         
-        self.search_btn = QPushButton("搜索")
+        self.search_btn = QPushButton("Search")
         self.search_btn.setIcon(QIcon.fromTheme("system-search"))
         self.search_btn.clicked.connect(self.on_search)
         
@@ -346,7 +346,7 @@ class MainWindow(QMainWindow):
         
         # 历史记录区域
         history_layout = QHBoxLayout()
-        history_label = QLabel("搜索历史:")
+        history_label = QLabel("Search History:")
         self.history_combo = QComboBox()
         self.history_combo.setMinimumWidth(500)  # 增加最小宽度
         self.history_combo.setMaximumHeight(45)  # 控制高度
@@ -369,26 +369,26 @@ class MainWindow(QMainWindow):
         
         # 结果标题与操作按钮
         result_header = QHBoxLayout()
-        result_title = QLabel("搜索结果")
+        result_title = QLabel("Search Results")
         result_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #2060a0;")
         
         # 功能按钮区
         btn_layout = QHBoxLayout()
-        self.detail_btn = QPushButton("量子搜索详情")
+        self.detail_btn = QPushButton("Quantum Search Details")
         self.detail_btn.setObjectName("quantumDetailBtn")  # 为按钮设置对象名，用于应用特定样式
-        self.detail_btn.setToolTip("查看Grover量子搜索算法详细信息")
+        self.detail_btn.setToolTip("View detailed information about Grover quantum search algorithm")
         self.detail_btn.clicked.connect(self.show_grover_detail)
         
-        self.compare_btn = QPushButton("算法效率对比")
-        self.compare_btn.setToolTip("对比经典搜索和量子搜索的效率差异")
+        self.compare_btn = QPushButton("Algorithm Efficiency Comparison")
+        self.compare_btn.setToolTip("Compare the efficiency difference between classical search and quantum search")
         self.compare_btn.clicked.connect(self.show_algorithm_comparison)
         
-        export_btn = QPushButton("导出结果")
-        export_btn.setToolTip("将搜索结果导出到文件")
+        export_btn = QPushButton("Export Results")
+        export_btn.setToolTip("Export search results to file")
         export_btn.clicked.connect(self.export_results)
         
-        settings_btn = QPushButton("搜索设置")
-        settings_btn.setToolTip("配置搜索参数")
+        settings_btn = QPushButton("Search Settings")
+        settings_btn.setToolTip("Configure search parameters")
         settings_btn.clicked.connect(self.show_settings)
         
         btn_layout.addWidget(self.detail_btn)
@@ -416,12 +416,12 @@ class MainWindow(QMainWindow):
         db_layout = QVBoxLayout(db_tab)
         db_layout.setContentsMargins(15, 20, 15, 15)
         
-        db_title = QLabel("数据库内容")
+        db_title = QLabel("Database Content")
         db_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #2060a0;")
         db_layout.addWidget(db_title)
         
         self.db_view = QTextBrowser()
-        refresh_btn = QPushButton("刷新数据")
+        refresh_btn = QPushButton("Refresh Data")
         refresh_btn.clicked.connect(self.refresh_database_view)
         
         db_layout.addWidget(self.db_view)
@@ -434,38 +434,38 @@ class MainWindow(QMainWindow):
         
         about_content = QTextBrowser()
         about_content.setHtml("""
-            <h2 style="color:#2060a0;">关于Grover量子搜索系统</h2>
-            <p>本系统结合了量子计算中的Grover搜索算法与经典网络爬虫技术，实现了一套完整的信息检索解决方案。</p>
-            <h3>核心功能</h3>
+            <h2 style="color:#2060a0;">About Grover Quantum Search System</h2>
+            <p>This system combines Grover search algorithm from quantum computing with classical web crawling technology to implement a complete information retrieval solution.</p>
+            <h3>Core Functions</h3>
             <ul>
-                <li>多源网络爬虫：自动从多个搜索引擎抓取并聚合结果</li>
-                <li>经典搜索：传统线性搜索算法实现</li>
-                <li>量子搜索：基于Qiskit实现的Grover量子搜索算法</li>
-                <li>搜索可视化：提供量子电路可视化与测量结果展示</li>
-                <li>本地数据库：高效存储与管理抓取结果</li>
+                <li>Multi-source web crawler: Automatically fetches and aggregates results from multiple search engines</li>
+                <li>Classical search: Traditional linear search algorithm implementation</li>
+                <li>Quantum search: Grover quantum search algorithm implemented based on Qiskit</li>
+                <li>Search visualization: Provides quantum circuit visualization and measurement result display</li>
+                <li>Local database: Efficiently stores and manages crawled results</li>
             </ul>
-            <h3>技术栈</h3>
+            <h3>Technology Stack</h3>
             <ul>
-                <li>PyQt5：桌面GUI界面</li>
-                <li>Qiskit：IBM量子计算框架</li>
-                <li>Matplotlib：数据可视化</li>
-                <li>Requests/BeautifulSoup：网络爬虫</li>
+                <li>PyQt5: Desktop GUI interface</li>
+                <li>Qiskit: IBM quantum computing framework</li>
+                <li>Matplotlib: Data visualization</li>
+                <li>Requests/BeautifulSoup: Web crawler</li>
             </ul>
-            <p>版本：1.0.0</p>
-            <p>© 2025 Grover量子搜索项目团队</p>
+            <p>Version: 1.0.0</p>
+            <p>© 2025 Grover Quantum Search Project Team</p>
         """)
         
         about_layout.addWidget(about_content)
         
         # 添加标签页到标签容器
-        self.tab_widget.addTab(search_tab, "搜索与抓取")
-        self.tab_widget.addTab(db_tab, "数据库")
-        self.tab_widget.addTab(about_tab, "关于")
+        self.tab_widget.addTab(search_tab, "Search & Crawl")
+        self.tab_widget.addTab(db_tab, "Database")
+        self.tab_widget.addTab(about_tab, "About")
         
         main_layout.addWidget(self.tab_widget)
         
         # 创建状态栏
-        self.statusBar().showMessage("就绪")
+        self.statusBar().showMessage("Ready")
         
         # 设置中央窗口部件
         self.setCentralWidget(central_widget)
@@ -477,25 +477,25 @@ class MainWindow(QMainWindow):
         """更新状态栏信息"""
         all_data = self.db.all()
         count = len(all_data) if all_data else 0
-        self.statusBar().showMessage(f"数据库记录数: {count} | 就绪")
+        self.statusBar().showMessage(f"Database Records: {count} | Ready")
 
     def refresh_database_view(self):
         """刷新数据库视图内容"""
         all_data = self.db.all()
         if not all_data:
-            self.db_view.setPlainText("数据库为空，请先抓取数据！")
+            self.db_view.setPlainText("Database is empty, please crawl data first!")
             return
         
-        html = "<h3>数据库内容 (共{0}条记录)</h3>".format(len(all_data))
+        html = "<h3>Database Content (Total {0} records)</h3>".format(len(all_data))
         for i, item in enumerate(all_data, 1):
-            title = item.get('title', '无标题')
+            title = item.get('title', 'No Title')
             url = item.get('url', '')
-            summary = item.get('summary', '无摘要')
+            summary = item.get('summary', 'No Summary')
             
             html += f"<p><b>{i}. {title}</b><br>"
             if url:
                 html += f"URL: <a href='{url}'>{url}</a><br>"
-            html += f"摘要: {summary}</p><hr>"
+            html += f"Summary: {summary}</p><hr>"
         
         self.db_view.setHtml(html)
         self.update_statusbar()
@@ -504,7 +504,7 @@ class MainWindow(QMainWindow):
         keyword = self.keyword_edit.text().strip()
 
         if not keyword:
-            QMessageBox.warning(self, "提示", "请输入关键词！")
+            QMessageBox.warning(self, "Tip", "Please enter a keyword!")
             return
         
         # 网络爬取（多源）
@@ -513,7 +513,7 @@ class MainWindow(QMainWindow):
         self.progress_bar.setValue(0)
         
         self.result_text.clear()
-        self.result_text.append("<span style='color:#2060a0; font-weight:bold;'>正在抓取（Bing+百度+搜狗），请稍候...</span>")
+        self.result_text.append("<span style='color:#2060a0; font-weight:bold;'>Crawling (Bing+Baidu+Sogou), please wait...</span>")
         QApplication.processEvents()
         
         self.crawl_thread = CrawlThread(keyword)

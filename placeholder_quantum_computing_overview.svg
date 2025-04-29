@@ -1,0 +1,49 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- 标题 -->
+  <text x="400" y="50" font-family="Arial" font-size="28" text-anchor="middle" fill="#2060a0">Quantum Computing Fundamentals</text>
+  
+  <!-- 经典计算vs量子计算对比 -->
+  <rect x="100" y="100" width="250" height="150" rx="10" fill="#ffffff" stroke="#2060a0" stroke-width="2"/>
+  <text x="225" y="125" font-family="Arial" font-size="18" text-anchor="middle" fill="#2060a0">Classical Computing</text>
+  <text x="225" y="160" font-family="Arial" font-size="14" text-anchor="middle">Bit: 0 or 1</text>
+  <text x="225" y="190" font-family="Arial" font-size="14" text-anchor="middle">Deterministic</text>
+  <text x="225" y="220" font-family="Arial" font-size="14" text-anchor="middle">Linear Operations</text>
+  
+  <!-- 量子计算方框 -->
+  <rect x="450" y="100" width="250" height="150" rx="10" fill="#ffffff" stroke="#2060a0" stroke-width="2"/>
+  <text x="575" y="125" font-family="Arial" font-size="18" text-anchor="middle" fill="#2060a0">Quantum Computing</text>
+  <text x="575" y="160" font-family="Arial" font-size="14" text-anchor="middle">Qubit: |0⟩, |1⟩, or superposition</text>
+  <text x="575" y="190" font-family="Arial" font-size="14" text-anchor="middle">Probabilistic</text>
+  <text x="575" y="220" font-family="Arial" font-size="14" text-anchor="middle">Quantum Parallelism</text>
+  
+  <!-- 连接箭头 -->
+  <line x1="350" y1="175" x2="450" y2="175" stroke="#2060a0" stroke-width="2"/>
+  <polygon points="450,175 440,170 440,180" fill="#2060a0"/>
+  
+  <!-- 量子比特球体表示(Bloch sphere) -->
+  <circle cx="575" cy="320" r="70" fill="#ffffff" stroke="#2060a0" stroke-width="2"/>
+  <ellipse cx="575" cy="320" rx="70" ry="20" fill="none" stroke="#2060a0" stroke-width="1"/>
+  <line x1="575" y1="250" x2="575" y2="390" stroke="#2060a0" stroke-width="1"/>
+  <line x1="505" y1="320" x2="645" y2="320" stroke="#2060a0" stroke-width="1"/>
+  <line x1="575" y1="320" x2="620" y2="280" stroke="#e74c3c" stroke-width="2"/>
+  <circle cx="620" cy="280" r="5" fill="#e74c3c"/>
+  <text x="575" y="405" font-family="Arial" font-size="14" text-anchor="middle">Bloch Sphere</text>
+  <text x="575" y="425" font-family="Arial" font-size="12" text-anchor="middle">(Qubit Representation)</text>
+  
+  <!-- 经典比特表示 -->
+  <rect x="175" y="280" width="100" height="40" rx="5" fill="#ffffff" stroke="#2060a0" stroke-width="2"/>
+  <text x="225" y="305" font-family="Courier New" font-size="18" text-anchor="middle">0 or 1</text>
+  <text x="225" y="345" font-family="Arial" font-size="14" text-anchor="middle">Classical Bit</text>
+  
+  <!-- 量子概念 -->
+  <rect x="100" y="380" width="600" height="60" rx="5" fill="#e0ecf4" stroke="#2060a0" stroke-width="1"/>
+  <text x="400" y="410" font-family="Arial" font-size="14" text-anchor="middle">
+    Key Quantum Properties: Superposition, Entanglement, Interference
+  </text>
+  <text x="400" y="430" font-family="Arial" font-size="14" text-anchor="middle">
+    Enabling: Quantum Algorithms, Quantum Simulations, Quantum Encryption
+  </text>
+</svg>
